@@ -1,0 +1,182 @@
+.productsManagementContainer {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(100vh - 370px);
+    background-color: #c3423f;
+    color: white;
+}
+
+.createBtn {
+    cursor: pointer;
+    width: 250px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-family: "Roboto Condensed", sans-serif;
+    letter-spacing: 0.3px;
+    border: 3px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    transition: color .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.createBtn:hover {
+    color: #c3423f;
+    background-color: white;
+}
+
+.productsManagement {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: productsManagementAni .2s linear;
+}
+
+@keyframes productsManagementAni {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.managementCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.managementCard {
+    box-sizing: border-box;
+    min-width: 330px;
+    width: 48%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9em;
+    gap: 2px;
+    background-color: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    padding: 0 5px;
+    transition: background-color .2s ease-in-out;
+}
+
+.managementCard:hover {
+    background-color: rgba(255,255,255,0.25);
+}
+
+.managementCard img {
+    height: 65px;
+    min-width: 65px;
+}
+
+.managementCardEdit {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.managementCardEdit button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.deletedProductSuccess {
+    width: 350px;
+    height: 65px;
+    background-color: #68c53d;
+    border: 3px solid #48882a;
+    border-radius: 4px;
+    color: #003b0d;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    animation: AlertAni 0.3s ease-in-out;
+    align-self: center;
+}
+
+.deletingProduct {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.deletingProductText {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    padding: 25px;
+    background-color: #fde74c;
+    border: 3px solid #b39e00;
+    border-radius: 5px;
+    color: #5f5400;
+}
+
+.deletingProductText h2 {
+    margin-bottom: 20px;
+}
+
+.deletingProductText button {
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    margin: 0 15px;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    letter-spacing: 1px;
+}
+
+.deletingProductText button:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.deletingProduct::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+} 
+
+@keyframes AlertAni {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (min-width:500px) {
+    .productsManagement {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

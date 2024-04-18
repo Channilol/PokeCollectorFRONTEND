@@ -1,0 +1,133 @@
+.headerNavDiv {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c3423f;
+    padding: 5px 0;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+}
+
+.headerNavDiv svg {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    fill: rgba(0,0,0,0.5);
+    stroke: rgba(0,0,0,0.4);
+    stroke-width: 0.5px;
+}
+
+.headerNav {
+    width: 100%;
+    height: 150px;
+    margin: 7.5px 0;
+    transition: height 0.3s ease-in-out, margin 0.3s ease-in-out;
+}
+
+.headerNav.hidden {
+    margin: 0;
+    height: 0px;
+}
+
+.headerNavUl {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    animation: ulAnimation 0.3s linear;
+}
+
+@keyframes ulAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.headerNavUl.hidden {
+    display: none;
+}
+
+.headerNavUl a {
+    width: 40%;
+}
+
+.headerNavUl li {
+    text-align: center;
+    padding: 10px 0;
+    margin: 5px 0;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    font-family: "Roboto Condensed", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: white;
+    transition: transform 0.2s ease-in-out;
+}
+
+.headerNavUl li img {
+    width: 20px;
+    height: 20px;
+}
+
+.headerNavUl li:hover {
+    transform: translateY(-3px);
+}
+
+@media screen and (min-width:768px) {
+    .headerNav {
+        height: 105px;
+        margin: 0;
+    }
+
+    .headerNavDiv svg {
+        display: none;
+    }
+
+    .headerNav.hidden {
+        margin: 0;
+        height: 105px;
+        display: flex;
+        align-items: center;
+    }
+
+    .headerNavUl.hidden {
+        display: flex;
+    }
+
+    .headerNavUl a {
+        width: 100px;
+        height: 100px;
+    }
+
+    .headerNavUl li {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width:900px) {
+    .headerNavUl, .headerNavUl.hidden {
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .headerNavUl li {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

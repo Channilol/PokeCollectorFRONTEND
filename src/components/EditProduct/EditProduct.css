@@ -1,0 +1,104 @@
+.editProductDiv {
+    width: 100%;
+    min-height: calc(100vh - 370px);
+    background-color: #c3423f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editProductForm {
+    box-sizing: border-box;
+    margin: 50px 0 0 0;
+    padding: 15px;
+    width: 80%;
+    border: 5px solid white;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.editProductForm h1 {
+    position: absolute;
+    top: -50px;
+    left: -5px;
+    color: white;
+}
+
+.editProductFormGroup p {
+    color: white;
+    font-size: 1.5em;
+}
+
+.editProductFormGroup input {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #404e4d;
+    transition: outline .15s linear;
+}
+
+.editProductFormGroup input:focus {
+    outline: 2px solid rgba(255,255,255,0.5);
+}
+
+.backLinkDiv {
+    align-self: flex-start;
+    margin-left: 15px;
+    font-size: 1.2em;
+    color: white;
+    display: flex;
+    gap: 5px;
+}
+
+.backLink {
+    color: white;
+}
+
+.backLinkDiv p span {
+    text-decoration: underline;
+}
+
+/* SUCCESS ALERT */
+
+.editSuccess {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.editSuccessText {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    padding: 25px;
+    background-color: #87df5e;
+    border: 3px solid #329405;
+    border-radius: 5px;
+    color: #1a5201;
+}
+
+.editSuccess::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+} 

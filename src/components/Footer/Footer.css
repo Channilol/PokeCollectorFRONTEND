@@ -1,0 +1,72 @@
+footer {
+    background-color: #c3423f;
+    color: white;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+}
+
+footer > div {
+    animation: footerAni .3s linear;
+}
+
+@keyframes footerAni {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+footer a {
+    color: white;
+}
+
+.footerDivLeft > div {
+    display: flex;
+}
+
+.footerDivLeft > div h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footerLogo {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footerLogo:hover {
+    transform: rotate(45deg);
+}
+
+.contactIcons {
+    margin-top: 15px;
+    display: flex;
+    gap: 7.5px;
+}
+
+@media screen and (min-width:500px) {
+    footer {
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width:768px) {
+    footer {
+        padding: 15px 15%;
+    }
+    footer > div {
+        margin: 0 50px;
+    }
+}

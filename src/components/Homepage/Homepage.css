@@ -1,0 +1,9 @@
+.heroSection {
+    width: 100%;
+    overflow: hidden;
+    max-height: 600px;
+}
+
+.heroSection > img {
+    width: 100%;
+}

@@ -1,0 +1,171 @@
+.newProductFormContainer {
+    width: 100%;
+    min-height: calc(100vh - 370px);
+    background-color: #c3423f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.newProductForm {
+    box-sizing: border-box;
+    margin: 50px 0 0 0;
+    padding: 15px;
+    width: 80%;
+    border: 5px solid white;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: newProductFormAni .2s linear;
+}
+
+@keyframes newProductFormAni {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.newProductForm h1 {
+    position: absolute;
+    top: -50px;
+    left: -5px;
+    color: white;
+}
+
+.newProductFormGroup p {
+    color: white;
+    font-size: 1.5em;
+}
+
+.newProductFormGroup input {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: #404e4d;
+    transition: outline .15s linear;
+}
+
+.newProductFormGroup input:focus {
+    outline: 2px solid rgba(255,255,255,0.5);
+}
+
+.newProductSelect {
+    height: 35px;
+    width: 175px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.formCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.createProductBtn {
+    cursor: pointer;
+    align-self: center;
+    width: 150px;
+    height: 50px;
+    font-size: 1.2em;
+    letter-spacing: 0.5px;
+    border: 3px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    transition: color .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.createProductBtn:hover {
+    color: #c3423f;
+    background-color: white;
+}
+
+.registerSuccessAlert {
+    width: 350px;
+    height: 75px;
+    margin: 0 auto;
+    background-color: #68c53d;
+    border: 3px solid #48882a;
+    border-radius: 4px;
+    color: #003b0d;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    animation: AlertAni 0.3s ease-in-out;
+}
+
+.registerErrorAlert {
+    width: 350px;
+    height: 75px;
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.2);
+    border: 3px solid #7e1715;
+    border-radius: 4px;
+    color: #520907;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    animation: AlertAni 0.3s ease-in-out;
+}
+
+@keyframes AlertAni {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.backLinkDiv {
+    align-self: flex-start;
+    margin-left: 20px;
+    font-size: 1.2em;
+    color: white;
+    display: flex;
+    gap: 5px;
+}
+
+.backLink {
+    color: white;
+}
+
+.backLinkDiv p span {
+    text-decoration: underline;
+}
+
+@media screen and (min-width:768px) {
+    .newProductForm {
+        width: 60%;
+    }
+    .formCenter {
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width:900px) {
+    .newProductForm {
+        width: 50%;
+    }
+}
