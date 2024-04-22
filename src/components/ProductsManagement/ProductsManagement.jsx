@@ -73,7 +73,7 @@ const ProductsManagement = () => {
             </div>
             </div>) : ''}
         <div className='productsManagement'>
-            <h1>ProductsManagement</h1>
+            <h1>Gestione Prodotti</h1>
             <button className='createBtn' onClick={() => navigate('/NewProductForm')}>Crea nuovo prodotto</button>
             {isDeleted ? (<div className='deletedProductSuccess'>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="rgba(0,0,0,0.5)" viewBox="0 0 16 16">
@@ -119,5 +119,5 @@ const ProductsManagement = () => {
     </div>
     )
 }
-//() => deleteProduct(product.ProductId)
+
 export default ProductsManagement

@@ -10,7 +10,21 @@ import News from '../../assets/image/icons8-megaphone-64.png'
 
 const HeaderNav = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        function handleScroll() {
+        const scrolled = window.scrollY > 0;
+        setIsScrolled(scrolled);
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+        window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const handleNavbar = () => {
         if (isOpen) {
@@ -23,7 +37,7 @@ const HeaderNav = () => {
 
     return (
         <>
-        <div className='headerNavDiv'>
+        <div className={isScrolled ? 'headerNavDiv scrolled' : 'headerNavDiv'}>
             <svg xmlns="http://www.w3.org/2000/svg" className="hamburgerIcon" viewBox="0 0 16 16" onClick={handleNavbar}>
                 <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
             </svg>

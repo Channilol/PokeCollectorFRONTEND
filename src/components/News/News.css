@@ -1,0 +1,25 @@
+#newsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 0;
+    box-sizing: border-box;
+    padding: 25px 0;
+    background-color: rgb(104, 197, 61,0.8);
+}
+
+#newsContainer h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-transform:uppercase;
+    letter-spacing: 01px;
+    color: white;
+}
+
+.newProductsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 25px;
+}

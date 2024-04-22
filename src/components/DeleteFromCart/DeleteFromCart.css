@@ -1,0 +1,64 @@
+.cartDeleteAlertBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+.cartDeleteAlert {
+    box-sizing: border-box;
+    position: relative;
+    width: 96%;
+    max-width: 500px;
+    z-index: 20;
+    text-align: center;
+    padding: 25px;
+    background-color: #fde74c;
+    border: 3px solid #b39e00;
+    border-radius: 5px;
+    color: #5f5400;
+}
+
+.cartDeleteAlert h1 {
+    margin-bottom: 20px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 500;
+}
+
+.cartDeleteAlert button {
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+    margin: 0 15px;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    letter-spacing: 1px;
+    font-family: "Roboto Condensed", sans-serif;
+    transition: .2s ease-in-out;
+}
+
+.cartDeleteAlert button:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.cartDeleteAlertBg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+} 
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

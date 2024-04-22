@@ -3,7 +3,13 @@
 --yellow: #fde74c;
 --green: #68c53d;
 --red: #c3423f;
---text: #404e4d; */
+--text: #404e4d;
+
+https://localhost:44350/Database/
+
+font-family: "Roboto Condensed", sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')*/
 
 body,p,a,h1,h2,h3,h4,h5,h6,ul,li {
   padding: 0;
@@ -16,6 +22,7 @@ body {
   font-family: "Lato", sans-serif;
   background-color: #fbfbfe;
   color: #404E4D;
+  scroll-behavior: smooth;
 }
 
 .App {
@@ -27,6 +34,16 @@ body {
 
 footer {
   margin: auto 0 0 0
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap')

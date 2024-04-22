@@ -4,11 +4,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #c3423f;
+    background-color: rgb(195, 66, 63,0.9);
+    border-bottom: 2px solid #b13735;
     padding: 5px 0;
     position: sticky;
     top: 0px;
     z-index: 10;
+    transition: .5s ease-in-out;
+}
+
+.headerNavDiv.scrolled {
+    background-color: #c3423f;
 }
 
 .headerNavDiv svg {

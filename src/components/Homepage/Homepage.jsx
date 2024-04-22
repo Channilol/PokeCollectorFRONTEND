@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import HeroCarousel from '../HeroCarousel/HeroCarousel'
+import News from '../News/News'
 
 const Homepage = () => {
     const [userRole, setUserRole] = useState('')
@@ -10,7 +11,6 @@ const Homepage = () => {
     const loggedUser = useSelector((state) => state.user.user) 
 
     useEffect(() => {
-        console.log(loggedUser)
         if(loggedUser.Role === 'Admin') {
             setUserRole('Admin')
         }
@@ -25,6 +25,7 @@ const Homepage = () => {
     return (
         <div className='homepageContainer'>
             <HeroCarousel/>
+            <News/>
         </div>
     )
 }

@@ -1,0 +1,212 @@
+.productPage {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(100vh - 75px - 117px - 180px);
+    margin: 0 auto 25px auto;
+    padding: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 5px solid #c3423f;
+}
+
+.productPage h1 {
+    background-color: #c3423f;
+    text-align: center;
+    color: white;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+.productPage > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 0 0;
+}
+
+.productPageLeft {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: .2s ease-in-out;
+}
+
+.productPageLeft img {
+    width: auto;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.productPageRight {
+    position: relative;
+    box-sizing: border-box;
+    background-color: #c3423f;
+    width: 100%;
+    position: relative;
+    color: white;
+    padding: 10px 0;
+    box-sizing: border-box;
+    padding: 0 5px;
+    transition: .2s ease-in-out;
+}
+
+.categoryTitle {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.2px;
+}
+
+.productPageRight p {
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding: 5px 0;
+}
+
+.fullPriceProduct {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+}
+
+.productPageBot {
+    display: flex;
+    align-items: center;
+}
+
+.productPageBot p {
+    border-bottom: none;
+    margin-right: 10px;
+}
+
+.minusQuantity {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid white;
+    font-size: 1em;
+    color: white;
+    transition: .2s ease-in-out;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.inputQuantity {
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    color: white;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.inputQuantity:focus {
+    outline: none;
+}
+
+.plusQuantity {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    border-radius: 0 4px 4px 0;
+    border: 2px solid white;
+    font-size: 0.9em;
+    color: white;
+    transition: .2s ease-in-out;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.minusQuantity:hover, .plusQuantity:hover {
+    background-color: white;
+    color: #c3423f;
+}
+
+.finalPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: right;
+    box-sizing: border-box;
+    padding-right: 5px!important;
+    border-bottom: none!important;
+    padding-bottom: 50px!important;
+}
+
+.buyBtn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    width: 75px;
+    height: 30px;
+    color: white;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    font-family: "Roboto Condensed", sans-serif;
+    transition: .2s ease-in-out;
+}
+
+.buyBtn:hover {
+    background-color: white;
+    color: #c3423f;
+}
+
+@media screen and (min-width:768px) {
+    .productPage {
+        border: none;
+    }
+
+    .productPage > div:first-of-type{
+        flex-direction: row;
+        padding: 0;
+        height: 100%;
+        border-bottom: 10px solid #c3423f;
+    }
+
+    .productPageLeft {
+        align-items: center;
+        width: 40%;
+    }
+
+    .productPageLeft img {
+        margin: 0;
+    }
+
+    .productPageRight {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .productPageLeft {
+        align-items: center;
+        width: 30%;
+    }
+
+    .productPageRight {
+        width: 70%;
+    }
+
+    .productPageRight p:nth-child(-n+4) {
+        padding: 5px 100px 5px 25px;
+    }
+
+    .productPageBot {
+        padding: 7.5px 0 0 25px;
+    }
+
+    .productPageBot p:first-of-type {
+        padding: 0px;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

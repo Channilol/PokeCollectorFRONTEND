@@ -4,12 +4,14 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setUserAction } from '../../redux/actions'
 import Cookies from 'js-cookie'
+import Spinner from '../Spinner/Spinner'
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isError, setIsError] = useState(false)
     const [user, setUser] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const loggedUser = useSelector((state) => state.user.user)
@@ -22,32 +24,38 @@ const Login = () => {
     },[])
 
     const handleSubmit = async (e) => {
+        setIsLoading(true)
         e.preventDefault();
         try {
             const res = await fetch(`https://localhost:44350/Database/GetUser?email=${email}&password=${password}`)
             if(res.ok) {
                 let data = await res.json()
                 if (data) {
-                    data.Password = null
                     dispatch(setUserAction(data))
                 }
-                setIsError(false)
-                console.log(data)
-                Cookies.set('user', `${data.UserId}`)
-                navigate('/')
+                if (Promise.all) {
+                    setIsLoading(false)
+                    setIsError(false)
+                    Cookies.set('user', `${data.UserId}`, { sameSite: 'None', secure: true });
+                    Cookies.set('userPsw', `${password}`, { sameSite: 'None', secure: true });
+                    navigate('/')
+                }
             }
             else {
                 setIsError(true)
+                setIsLoading(false)
             }
         }
         catch(err) {
             setIsError(true)
+            setIsLoading(false)
             console.log(`Errore nel recupero dati: ${err}`)
         }
     }
 
     return (
         <>
+        {isLoading ? <Spinner/> : ''}
         <div className='loginContainer'>
             <form className='loginForm' onSubmit={(e) => handleSubmit(e)}>
                 <h1>Login</h1>

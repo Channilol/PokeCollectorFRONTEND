@@ -1,0 +1,42 @@
+.spinnerBlur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.spinnerContainer {
+    z-index: 30;
+}
+
+.pokeballSpinner {
+    width: 125px;
+    height: 125px;
+    animation: spinnerAni 1.5s ease-in-out infinite;
+}
+
+@keyframes spinnerAni {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(720deg);
+    }
+}
+
+.spinnerBlur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(20px);
+} 
