@@ -1,0 +1,74 @@
+.completeOrderBg {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(100vh - 372px);
+    background-color: #c3423f;
+    padding: 30px 25px;
+    color: white;
+}
+
+.completeOrder {
+    display: flex;
+    flex-direction: column;
+}
+
+.completeOrder h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 500;
+    font-size: 2em;
+}
+
+.shipmentInfos {
+    border-top: 2px solid rgb(255,255,255,0.3);
+    border-bottom: 2px solid rgb(255,255,255,0.3);
+    width: 90%;
+    margin: 15px auto;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.shipmentInfoTxt {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.shipmentInfoTitle {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 500;  
+    font-size: 1.2em;
+}
+
+.shipmentInfoTxt p {
+    font-size: 1.15em;
+    background-color: rgb(255,255,255,0.1);
+    padding: 5px 15px;
+}
+
+.completeOrderBtn {
+    align-self: center;
+    cursor: pointer;
+    width: 300px;
+    height: 65px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.5em;
+    color: #c3423f;
+    background-color: white;
+    border: 3px solid white;
+    border-radius: 4px;
+    transition: .2s ease-in-out;
+}
+
+.completeOrderBtn:hover {
+    color: white;
+    background-color: #68c53d;
+    border: 3px solid #68c53d;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

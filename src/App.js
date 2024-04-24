@@ -17,6 +17,10 @@ import NewProductForm from './components/NewProductForm/NewProductForm';
 import EditProduct from './components/EditProduct/EditProduct';
 import Spinner from './components/Spinner/Spinner';
 import ProductPage from './components/ProductPage/ProductPage';
+import CompleteOrder from './components/CompleteOrder/CompleteOrder';
+import UserShippingInfo from './components/UserShippingInfo/UserShippingInfo';
+import UserOrders from './components/UserOrders/UserOrders';
+import OrdersManagement from './components/OrdersManagement/OrdersManagement';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false)
@@ -49,7 +53,7 @@ function App() {
         }
       }
       catch(err) {
-        console.log(`Errore nel recupero dati: ${err}`)
+        console.log(`Errore nel recupero datiaaaa: ${err}`)
         setIsLoading(false)
       }
     }
@@ -71,6 +75,10 @@ function App() {
           <Route path='/NewProductForm' element={<NewProductForm/>}/>
           <Route path='/EditProduct/:id' element={<EditProduct/>}/>
           <Route path='/Product/:id' element={<ProductPage/>}/>
+          <Route path='/CompleteOrder' element={<CompleteOrder/>}/>
+          <Route path='/AddUserShipmentInfo' element={<UserShippingInfo/>}/>
+          <Route path='/UserOrders' element={<UserOrders/>}/>
+          <Route path='/OrdersManagement' element={<OrdersManagement/>}/>
         </Routes>
         <Footer/>
       </div>

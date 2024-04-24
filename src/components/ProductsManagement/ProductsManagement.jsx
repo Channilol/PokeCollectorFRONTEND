@@ -88,7 +88,8 @@ const ProductsManagement = () => {
                         <img src={product.Image}/>
                         <div className='managementCardText'>
                             <p>Nome: {product.Name}</p>
-                            <p>{product.Type} - {product.Language}</p>                     
+                            <p>{product.Type} - {product.Language}</p>  
+                            <p>Disponibilità: {product.Disponibilita}</p>                   
                         </div>
                         <div className='managementCardPrice'>
                             <p>Sconto: {product.Discount}%</p>

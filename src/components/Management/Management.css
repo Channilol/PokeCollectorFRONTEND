@@ -22,8 +22,8 @@
     color: white;
     font-size: 2em;
     font-family: "Roboto Condensed", sans-serif;
-    transition: transform .2s ease-in-out, background-color .2s ease-in-out, color .2s ease-in-out;
-    animation: managementAni .3s linear;
+    transition: .2s ease-in-out;
+    animation: managementAni .2s ease-in-out;
 }
 
 .managementLink > div {

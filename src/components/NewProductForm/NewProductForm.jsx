@@ -5,12 +5,14 @@ import { useSelector } from 'react-redux'
 
 const NewProductForm = () => {
     const [newProduct, setNewProduct] = useState({
-       Name: '',
-       PricePerUnit: 0,
-       CategoryId: 0,
-       Discount: 0,
-       Language: 'IT',
-       Image: ''
+        Name: '',
+        PricePerUnit: 0,
+        CategoryId: 0,
+        Discount: 0,
+        Language: 'IT',
+        Image: '',
+        Descrizione: '',
+        Disponibilita: 'SI',
     })
     const [isError, setIsError] = useState(false)
     const [isRegistered, setIsRegistered] = useState(false)
@@ -25,7 +27,7 @@ const NewProductForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if(newProduct.Name !== '' && newProduct.PricePerUnit > 0 && newProduct.CategoryId > 0 && newProduct.Discount >= 0 && newProduct.Discount <= 100 && newProduct.Language !== '') {
+        if(newProduct.Name !== '' && newProduct.PricePerUnit > 0 && newProduct.CategoryId > 0 && newProduct.Discount >= 0 && newProduct.Discount <= 100 && newProduct.Language !== '' && newProduct.Disponibilita === 'SI' || newProduct.Disponibilita === 'NO') {
             setIsError(false)
             try {
                 const res = await fetch('https://localhost:44350/Database/AddProduct', {
@@ -43,7 +45,9 @@ const NewProductForm = () => {
                         CategoryId: 0,
                         Discount: 0,
                         Language: 'IT',
-                        Image: ''
+                        Image: '',
+                        Descrizione: '',
+                        Disponibilita: 'SI',
                      })
                      setTimeout(() => {setIsRegistered(false)},5000)
                 }
@@ -130,7 +134,20 @@ const NewProductForm = () => {
                             </select>
                         </div>
                     </div>
-                    </div>
+                </div>
+                <div className='editProductFormGroup'>
+                    <p>Disponibilità</p>
+                    <select name="productDisponibility" className="disponibilitySelect" onChange={(e) => {setNewProduct({...newProduct, Disponibilita: e.target.value})}} value={newProduct.Disponibilita} required>
+                        <option value="SI" active>SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+                <div className='editProductFormGroup'>
+                    <p>
+                    Descrizione
+                    </p>
+                    <input type='text' id='editProductDescription' value={newProduct.Descrizione} onChange={(e) => {setNewProduct({...newProduct, Descrizione: e.target.value})}}/>
+                </div>
                 <div className='newProductFormGroup'>
                     <p>
                     Immagine

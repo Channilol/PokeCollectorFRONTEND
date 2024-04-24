@@ -119,7 +119,7 @@ const MyCart = () => {
                 <div className='cartTotalPrice'>
                     <h2>Prezzo totale:</h2>
                     <p>€{totalPrice}</p>
-                    <button>Prosegui con l'ordine</button>
+                    {totalPrice > 0 ? <button onClick={() => navigate('/CompleteOrder')}>Prosegui con l'ordine</button> : ''}
                 </div>
             </>
         )}

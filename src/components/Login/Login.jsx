@@ -1,5 +1,5 @@
 import './Login.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setUserAction } from '../../redux/actions'
@@ -76,6 +76,7 @@ const Login = () => {
                 </div>
                 <button type='submit'>Accedi</button>
             </form>
+            <Link to='/Register'>Non hai un'account? Clicca qui per registrarti</Link>
         </div>
         </>
     )

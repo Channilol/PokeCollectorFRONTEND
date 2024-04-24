@@ -12,7 +12,9 @@ const EditProduct = () => {
         CategoryId: 0,
         Discount: 0,
         Language: '',
-        Image: ''
+        Image: '',
+        Descrizione: '',
+        Disponibilita: 'SI',
     })
     const [isError, setIsError] = useState(false)
     const [isEdited, setIsEdited] = useState(false)
@@ -139,7 +141,20 @@ const EditProduct = () => {
                             </select>
                         </div>
                     </div>
-                    </div>
+                </div>
+                <div className='editProductFormGroup'>
+                    <p>Disponibilità</p>
+                    <select name="productDisponibility" className="disponibilitySelect" onChange={(e) => {setProduct({...product, Disponibilita: e.target.value})}} value={product.Disponibilita} required>
+                        <option value="SI" active>SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+                <div className='editProductFormGroup'>
+                    <p>
+                    Descrizione
+                    </p>
+                    <input type='text' id='editProductDescription' value={product.Descrizione} onChange={(e) => {setProduct({...product, Descrizione: e.target.value})}}/>
+                </div>
                 <div className='editProductFormGroup'>
                     <p>
                     Immagine

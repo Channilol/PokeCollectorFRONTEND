@@ -3,12 +3,11 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Spinner from '../Spinner/Spinner'
-import Cookies from 'js-cookie'
 
 const ProductPage = () => {
     const [product, setProduct] = useState()
     const [discountedPrice, setDiscountedPrice] = useState(0)
-    const [finalPrice, setFinalPrice] = useState(0)
+    const [finalPrice, setFinalPrice] = useState(10)
     const [isAdded, setIsAdded] = useState(false)
     const [seconds, setSeconds] = useState(3)
     const [newOrder, setNewOrder] = useState({
@@ -20,61 +19,72 @@ const ProductPage = () => {
     let productId = useParams()
     const navigate = useNavigate()
     const loggedUser = useSelector((state) => state.user.user) 
-    const userPsw = Cookies.get('userPsw')
 
     useEffect(() => {
         window.scrollTo(0, 0);
         if (productId.id > 0) {
-            getProduct()
-            getCartId()
-        }
-        async function getProduct() {
-            try{
-                const res = await fetch(`https://localhost:44350/Database/GetProduct?productId=${productId.id}`)
-                if(res.ok){
-                    const data = await res.json()                  
-                    setProduct(data)
-                }
-            }
-            catch(err){
-                console.log('Errore nella fetch:',err)
-            }
-        }
-        async function getCartId() {
-            if (loggedUser !== '') {
-                try {
-                    const res = await fetch(`https://localhost:44350/Database/CheckCart?userId=${loggedUser.UserId}`)
-                    if(res.ok) {
-                        const data = await res.json()
-                        if (data !== null) {
-                            setNewOrder({...newOrder, CartId: data.CartId})
-                        } 
-                    }
-                }
-                catch(err) {
-                    console.log('Errore nel recupero carrello:', err)
-                }
-            }
+            getProduct();    
+        } else {
+            navigate('/')
         }
     },[])
 
     useEffect(() => {
+        if(newOrder.ProductId > 0 && newOrder.Price > 0) {
+            getCartId();
+        }
+    },[newOrder.ProductId])
+
+    useEffect(() => {
+        setFinalPrice(Math.round((newOrder.Quantity * discountedPrice) * 100) / 100)
+    },[newOrder.Quantity])
+
+    useEffect(() => {
         if(product !== undefined) { 
-            const fullPrice = product.PricePerUnit
-            const discount = product.Discount
-            if(discount > 0) {
+            if(product.Discount > 0) {
                 const discountApplied = Math.round((product.PricePerUnit - ((product.PricePerUnit * product.Discount) / 100)) * 100) / 100;
                 setDiscountedPrice(discountApplied)
-                setNewOrder({...newOrder, Price: discountApplied})
+                setFinalPrice(discountApplied)
             } else {
-                setDiscountedPrice(fullPrice)
-                setNewOrder({...newOrder, Price: fullPrice})
+                setDiscountedPrice(product.PricePerUnit)
             }
         }
-        if(product !== undefined) {
-            setNewOrder(prevOrder => ({...prevOrder, ProductId: product.ProductId}))
+        if(newOrder.Price > 0) {
+            setNewOrder({})
         }
     },[product])
+
+    async function getProduct() {
+        try{
+            const res = await fetch(`https://localhost:44350/Database/GetProduct?productId=${productId.id}`)
+            if(res.ok){
+                const data = await res.json()                  
+                setNewOrder({...newOrder, ProductId: data.ProductId, Price: data.PricePerUnit})
+                setProduct(data)
+                setFinalPrice(data.PricePerUnit)
+            }
+        }
+        catch(err){
+            console.log('Errore nella fetch:',err)
+        }
+    }
+
+    async function getCartId() {
+        if (loggedUser !== '') {
+            try {
+                const res = await fetch(`https://localhost:44350/Database/CheckCart?userId=${loggedUser.UserId}`)
+                if(res.ok) {
+                    const data = await res.json()
+                    if (data !== null) {
+                        setNewOrder({...newOrder, CartId: data.CartId})
+                    } 
+                }
+            }
+            catch(err) {
+                console.log('Errore nel recupero carrello:', err)
+            }
+        }
+    }
 
     const handleMinusQuantity = () => {
         if(newOrder.Quantity > 1) {
@@ -88,17 +98,7 @@ const ProductPage = () => {
         }
     }
 
-    useEffect(() => {
-        setFinalPrice(Math.round((newOrder.Quantity * discountedPrice) * 100) / 100)
-    },[newOrder.Quantity])
-    
-    useEffect(() => {
-        setNewOrder(prevState => ({...prevState, Price: finalPrice}))
-    },[finalPrice])
-
-    async function handleSubmit(e) {
-        e.preventDefault()
-        setNewOrder({...newOrder, ProductId: product.ProductId, Price: finalPrice})
+    async function handleSubmit() {
         if(newOrder.ProductId > 0 && newOrder.Quantity > 0 && newOrder.Price > 0 && newOrder.CartId > 0) {
             try {
                 const res = await fetch ('https://localhost:44350/Database/AddOrder', {
@@ -148,9 +148,9 @@ const ProductPage = () => {
                     <img src={product.Image}/>
                 </div>
                 <div className='productPageRight'>
-                    <p><span className='categoryTitle'>Descrizione:</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta facere voluptates harum ipsa blanditiis illum, animi impedit modi adipisci tempora, laboriosam itaque voluptatem omnis est earum dignissimos pariatur totam consequuntur!</p>
+                    <p><span className='categoryTitle'>Descrizione:</span> {product.Descrizione}</p>
                     <p><span className='categoryTitle'>Lingua:</span> {product.Language}</p>
-                    <p><span className='categoryTitle'>Disponibilità:</span> Si</p>
+                    <p><span className='categoryTitle'>Disponibilità:</span> {product.Disponibilita}</p>
                     <p><span className='categoryTitle'>Prezzo per unità:</span> {product.Discount > 0 ? (<><span className='fullPriceProduct'>€{product.PricePerUnit}</span> <span className='discountedProduct'>€{discountedPrice}</span></>) : `€${product.PricePerUnit}`}</p>
                     <div className='productPageBot'>
                         <p className='categoryTitle'>Quantità:</p>
@@ -167,11 +167,11 @@ const ProductPage = () => {
                         <span className='categoryTitle'>
                             Prezzo finale: 
                         </span>
-                        €{finalPrice > 0 ? finalPrice : discountedPrice}
+                        €{finalPrice}
                     </p>
                     <button className='buyBtn' onClick={(e) => {
-                        setNewOrder({...newOrder, ProductId: product.ProductId, Price: finalPrice})
-                        handleSubmit(e)
+                        console.log(newOrder)
+                        handleSubmit()
                         }}>
                         Compra
                     </button>
