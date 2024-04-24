@@ -43,9 +43,16 @@ const ProfilePage = () => {
                 <p><span className='profileTitle'>Nome:</span>{loggedUser.Name}</p>
                 <p><span className='profileTitle'>Cognome:</span> {loggedUser.Surname}</p>
                 <p><span className='profileTitle'>Email:</span> {loggedUser.Email}</p>
-                <p className='profileTitle'>Metodo di pagamento:</p>
-                {noShipment ? (<p>Nessun metodo di pagamento impostato.</p>) : (<p>Metodo di pagamento attivo: {shipmentInfo.CardNumber}</p>)}
+                <p className='profileTitleBigger'>Metodo di pagamento impostato:</p>
+                {noShipment ? (<p>Nessun metodo di pagamento impostato.</p>) : (<>
+                <div className='profilePageUserPayment'>
+                    <p><span className='profileTitle'>Indirizzo:</span> {shipmentInfo.Address}</p>
+                    <p><span className='profileTitle'>CAP:</span> {shipmentInfo.ZipCode}</p>
+                    <p><span className='profileTitle'>Città:</span> {shipmentInfo.City} ({shipmentInfo.Province})</p>
+                    <p><span className='profileTitle'>Carta:</span> {shipmentInfo.CardNumber} {shipmentInfo.CardExpiringDate}</p>
+                </div></>)}
                 <button onClick={() => navigate('/AddUserShipmentInfo')}>Aggiungi metodo di pagamento</button>
+                <button onClick={() => navigate('/WishList')}>Guarda la tua Wish List!</button>
                 <button onClick={() => navigate('/UserOrders')}>Visualizza i tuoi ordini</button>
             </div>
         </div>

@@ -19,6 +19,11 @@
     padding: 10px 0;
 }
 
+.productPageRight h2 {
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
 .productPage > div:first-of-type {
     display: flex;
     flex-direction: column;

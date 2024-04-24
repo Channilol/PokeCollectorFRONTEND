@@ -31,6 +31,13 @@
     margin-right: 5px;
 }
 
+.profileTitleBigger {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 500;
+    margin-right: 5px;
+    font-size: 1.4em;
+}
+
 .profilePage button {
     cursor: pointer;
     margin-top: 15px;
@@ -49,6 +56,14 @@
 .profilePage button:hover {
     color: #c3423f;
     background-color: white;
+}
+
+.profilePageUserPayment {
+    box-sizing: border-box;
+    padding: 15px;
+    width: 300px;
+    border-radius: 4px;
+    background-color: rgb(255,255,255,0.2);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

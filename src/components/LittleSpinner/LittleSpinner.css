@@ -1,0 +1,25 @@
+.littleSpinnerBg {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c3423f;
+}
+
+.littleSpinner {
+    width: 125px;
+    height: 125px;
+    z-index: 110;
+    animation: spinnerAni 1.5s ease-in-out infinite;
+}
+
+@keyframes spinnerAni {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(720deg);
+    }
+}

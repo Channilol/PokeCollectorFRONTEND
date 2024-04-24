@@ -1,0 +1,10 @@
+.pokedexBg {
+    width: 100%;
+    min-height: calc(100vh - 372px);
+    background-color: #c3423f;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

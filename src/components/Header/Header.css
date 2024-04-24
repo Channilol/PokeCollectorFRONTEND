@@ -50,15 +50,15 @@ header ul {
     width: 100%;
     height: 40px;
     padding: 0 10px;
-    border: 2px solid #c3423f;
+    border: 2px solid white;
     border-radius: 4px;
     font-size: 0.9em;
     color: #404e4d;
-    transition: box-shadow .2s linear;
+    transition: .2s linear;
 }
 
 .searchInputDiv input:focus {
-    box-shadow: 0 0 4px #c3423f;
+    box-shadow: 0 0 4px white;
     outline: none;
 }
 

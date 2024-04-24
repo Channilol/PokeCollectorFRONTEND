@@ -76,4 +76,31 @@
     background-color: #008cff;
 }
 
+.likeBtn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 9px;
+    right: 100px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    border-radius: none;
+    fill: rgb(0,0,0,0.3);
+}
+
+.heartBtn {
+    fill: rgb(0,0,0,0.3);
+    transition: .2s ease-in-out;
+}
+
+.heartBtn.active {
+    fill: rgb(0,0,0,0.8);
+}
+
+.heartBtn:hover {
+    fill: rgb(0,0,0,0.6);
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

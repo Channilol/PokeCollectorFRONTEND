@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import Spinner from '../Spinner/Spinner'
 
 const ProductPage = () => {
-    const [product, setProduct] = useState()
+    const [product, setProduct] = useState({})
     const [discountedPrice, setDiscountedPrice] = useState(0)
     const [finalPrice, setFinalPrice] = useState(10)
     const [isAdded, setIsAdded] = useState(false)
@@ -152,7 +152,8 @@ const ProductPage = () => {
                     <p><span className='categoryTitle'>Lingua:</span> {product.Language}</p>
                     <p><span className='categoryTitle'>Disponibilità:</span> {product.Disponibilita}</p>
                     <p><span className='categoryTitle'>Prezzo per unità:</span> {product.Discount > 0 ? (<><span className='fullPriceProduct'>€{product.PricePerUnit}</span> <span className='discountedProduct'>€{discountedPrice}</span></>) : `€${product.PricePerUnit}`}</p>
-                    <div className='productPageBot'>
+                    {loggedUser !== '' ? (<>
+                        <div className='productPageBot'>
                         <p className='categoryTitle'>Quantità:</p>
                         <button className='minusQuantity' onClick={() => handleMinusQuantity()}>-</button>
                         <input className='inputQuantity' type='number' value={newOrder.Quantity} min={1} max={99} onChange={(e) => {
@@ -175,6 +176,7 @@ const ProductPage = () => {
                         }}>
                         Compra
                     </button>
+                    </>) : <h2>Accedi per comprare il prodotto.</h2>}
                 </div>
             </div>
             </>) : <Spinner/>}

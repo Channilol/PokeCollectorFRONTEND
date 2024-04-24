@@ -21,6 +21,10 @@ import CompleteOrder from './components/CompleteOrder/CompleteOrder';
 import UserShippingInfo from './components/UserShippingInfo/UserShippingInfo';
 import UserOrders from './components/UserOrders/UserOrders';
 import OrdersManagement from './components/OrdersManagement/OrdersManagement';
+import WishList from './components/WishList/WishList';
+import ProductByLan from './components/ProductByLan/ProductByLan';
+import Pokedex from './components/Pokedex/Pokedex';
+import SearchPage from './components/SearchPage/SearchPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false)
@@ -79,6 +83,10 @@ function App() {
           <Route path='/AddUserShipmentInfo' element={<UserShippingInfo/>}/>
           <Route path='/UserOrders' element={<UserOrders/>}/>
           <Route path='/OrdersManagement' element={<OrdersManagement/>}/>
+          <Route path='/WishList' element={<WishList/>}/>
+          <Route path='/ProductByLan/:id' element={<ProductByLan/>}/>
+          <Route path='/Pokedex' element={<Pokedex/>}/>
+          <Route path='/SearchPage/:id' element={<SearchPage/>}/>
         </Routes>
         <Footer/>
       </div>

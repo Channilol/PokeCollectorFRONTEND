@@ -9,13 +9,15 @@ const CompleteOrder = () => {
         CartId: 0,
         UserId: 0,
         State: 'IN ATTESA',
-        TotalPrice: 0,
+        TotalPrice: 1,
         Date: '',
     })
     const [finalPrice, setFinalPrice] = useState(0)
     const [shippingPrice, setShippingPrice] = useState(10)
     const [noShipment, setNoShipment] = useState(true)
     const [shipmentInfo, setShipmentInfo] = useState('')
+    const [isDone, setIsDone] = useState(false)
+    const [seconds, setSeconds] = useState(3)
     const user = Cookies.get('user');
     const userPsw = Cookies.get('userPsw')
     const loggedUser = useSelector((state) => state.user.user) 
@@ -34,6 +36,18 @@ const CompleteOrder = () => {
             setNewCartData({...newCartData, TotalPrice: finalPrice})
         }
     },[finalPrice])
+
+    useEffect(() => {
+        let intervalId
+        if(isDone) {
+            intervalId = setInterval(() => {
+                setSeconds(prevSeconds => prevSeconds - 1)
+            }, 1000)
+            setTimeout(() => {
+                navigate('/UserOrders')
+            },3000)
+        }
+    },[isDone])
 
     async function getShipmentInfo() {
         if(loggedUser !== '') {
@@ -107,8 +121,7 @@ const CompleteOrder = () => {
                 })
                 if(res.ok){
                     GetUser(user, userPsw)
-                    console.log('Ordine cambiato con successo')
-                    navigate('/ProfilePage')
+                    setIsDone(true)
                 } else {
                     console.log('Errore nella fetch PUT')
                 }
@@ -135,6 +148,12 @@ const CompleteOrder = () => {
 
     return (
         <div className='completeOrderBg'>
+            {isDone ? (<div className='registeredSuccess'>
+                <div className='registeredSuccessText'>
+                    <h2>Ordine in fase di elaborazione!</h2>
+                    <h4>Verrai reinderizzato ai tuoi ordini in <span className='seconds'>{seconds}</span> secondi.</h4>
+                </div>
+            </div>) : ''}
             <div className='completeOrder'>
                 <h1>Totale spesa ordini: €{finalPrice}</h1>
                 <h1>Spesa di spedizione: €{shippingPrice}</h1>

@@ -1,0 +1,25 @@
+.wishListBg {
+    width: 100%;
+    min-height: calc(100vh - 372px);
+    background-color: #c3423f;
+    color: white;
+    box-sizing: border-box;
+}
+
+.wishList {
+    width: 80%;
+    min-width: 350px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wishList > div {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

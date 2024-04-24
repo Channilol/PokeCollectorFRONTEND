@@ -129,4 +129,9 @@
     fill: rgb(133, 10, 10);
 }
 
+.loginContainer > a {
+    margin-top: 15px;
+    color: white;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,500;1,500&display=swap')

@@ -11,6 +11,7 @@ import HeaderNav from '../HeaderNav/HeaderNav'
 const Header = () => {
     const [isLogged, setIsLogged] = useState(false)
     const [isLogin, setIsLogin] = useState(false)
+    const [searchTxt, setSearchTxt] = useState('')
     const loggedUser = useSelector((state) => state.user.user)
     const dispatch = useDispatch()
     const location = useLocation()
@@ -50,6 +51,10 @@ const Header = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(searchTxt !== '') {
+            navigate(`/SearchPage/${searchTxt}`)
+            setSearchTxt('')
+        }
     }
 
     return (
@@ -67,7 +72,7 @@ const Header = () => {
                 <div className='headerCenter'>
                     <div className='searchInputDiv'>
                         <form onSubmit={(e) => handleSubmit(e)}>
-                            <input type='text' placeholder='Cerca tra i prodotti'></input>
+                            <input type='text' placeholder='Cerca tra i prodotti' value={searchTxt} onChange={(e) => {setSearchTxt(e.target.value)}}></input>
                         </form>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>

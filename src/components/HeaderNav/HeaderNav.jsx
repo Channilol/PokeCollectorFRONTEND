@@ -44,11 +44,10 @@ const HeaderNav = () => {
             <nav className={isOpen ? 'headerNav' : 'headerNav hidden'}>
                 <ul className={isOpen ? 'headerNavUl' : 'headerNavUl hidden'}>
                     <Link to='/'><li><img src={Home} alt=''/>Home</li></Link>
-                    <Link to='/'><li><img src={News} alt=''/>Novità</li></Link>
-                    <Link to='/'><li><img src={Italy} alt=''/>Carte(IT)</li></Link>
-                    <Link to='/'><li><img src={UK} alt=''/>Carte(EN)</li></Link>
-                    <Link to='/'><li><img src={Japan} alt=''/>Carte(JP)</li></Link>
-                    <Link to='/'><li><img src={Pokeball} alt=''/>Pokédex</li></Link>
+                    <Link to='/ProductByLan/IT'><li><img src={Italy} alt=''/>Carte(IT)</li></Link>
+                    <Link to='/ProductByLan/EN'><li><img src={UK} alt=''/>Carte(EN)</li></Link>
+                    <Link to='/ProductByLan/JP'><li><img src={Japan} alt=''/>Carte(JP)</li></Link>
+                    <Link to='/Pokedex'><li><img src={Pokeball} alt=''/>Pokédex</li></Link>
                 </ul>
             </nav>
         </div>
