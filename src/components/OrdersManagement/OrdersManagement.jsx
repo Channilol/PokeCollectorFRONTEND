@@ -1,9 +1,12 @@
 import './OrdersManagement.css'
 import { useState, useEffect } from 'react'
+import LittleSpinner from '../LittleSpinner/LittleSpinner'
+import { Link, useNavigate } from 'react-router-dom'
 
 const OrdersManagement = () => {
     const [allOrders, setAllOrders] = useState([])
     const [areOrdersOn, setAreOrdersOn] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getAllOrders()
@@ -49,48 +52,98 @@ const OrdersManagement = () => {
     return (
     <div className='ordersManagementBg'>
         <div className='ordersManagement'>
-            {areOrdersOn ? (<>
-                <h1>In attesa:</h1>
-            <ul>
-                {allOrders.map(order => {
-                    if(order.State === 'IN ATTESA') {
-                        return <li>Ordine n.:{order.CartId} | Stato: {order.State} | Spesa totale: {order.Price} | Data ordine: {convertiDataUnixEpoch(order.Date)}</li>
-                    }
-                })}
-            </ul>
-            <h1>In lavorazione:</h1>
-            <ul>
-                {allOrders.map(order => {
-                    if(order.State === 'IN LAVORAZIONE') {
-                        return <li>Ordine n.:{order.CartId} | Stato: {order.State} | Spesa totale: {order.Price} | Data ordine: {convertiDataUnixEpoch(order.Date)}</li>
-                    }
-                })}
-            </ul>
-            <h1>Spediti:</h1>
-            <ul>
-                {allOrders.map(order => {
-                    if(order.State === 'SPEDITO') {
-                        return <li>Ordine n.:{order.CartId} | Stato: {order.State} | Spesa totale: {order.Price} | Data ordine: {convertiDataUnixEpoch(order.Date)}</li>
-                    }
-                })}
-            </ul>
-            <h1>Consegnati:</h1>
-            <ul>
-                {allOrders.map(order => {
-                    if(order.State === 'CONSEGNATO') {
-                        return <li>Ordine n.:{order.CartId} | Stato: {order.State} | Spesa totale: {order.Price} | Data ordine: {convertiDataUnixEpoch(order.Date)}</li>
-                    }
-                })}
-            </ul>
-            <h1>Resi:</h1>
-            <ul>
-                {allOrders.map(order => {
-                    if(order.State === 'RESO') {
-                        return <li>Ordine n.:{order.CartId} | Stato: {order.State} | Spesa totale: {order.Price} | Data ordine: {convertiDataUnixEpoch(order.Date)}</li>
-                    }
-                })}
-            </ul>
-            </>) : ''}
+            <div className='ordersInAttesa'>
+                <h1>In attesa</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordine n.</th>
+                            <th>Spesa Ordine</th>
+                            <th>Data Ordine</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        {allOrders.map(order => {
+                            if(order.State === 'IN ATTESA'){
+                                return <tr className='trOrders' key={order.CartId} onClick={() => navigate(`/SeeOrder/${order.CartId}`)}>
+                                    <td>{order.CartId}</td>
+                                    <td>€{order.TotalPrice}</td>
+                                    <td>{convertiDataUnixEpoch(order.Date)}</td>
+                                </tr>
+                            }
+                        })}
+                    </tbody>
+                </table>
+            </div>
+            <div className='ordersInLavorazione'>
+                <h1>In lavorazione</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordine n.</th>
+                            <th>Spesa Ordine</th>
+                            <th>Data Ordine</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        {allOrders.map(order => {
+                            if(order.State === 'IN LAVORAZIONE'){
+                                return <tr className='trOrders' key={order.CartId} onClick={() => navigate(`/SeeOrder/${order.CartId}`)}>
+                                    <td>{order.CartId}</td>
+                                    <td>€{order.TotalPrice}</td>
+                                    <td>{convertiDataUnixEpoch(order.Date)}</td>
+                                </tr>
+                            }
+                        })}
+                    </tbody>
+                </table>
+            </div>
+            <div className='ordersSpediti'>
+                <h1>Spediti</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordine n.</th>
+                            <th>Spesa Ordine</th>
+                            <th>Data Ordine</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        {allOrders.map(order => {
+                            if(order.State === 'SPEDITO'){
+                                return <tr className='trOrders' key={order.CartId} onClick={() => navigate(`/SeeOrder/${order.CartId}`)}>
+                                    <td>{order.CartId}</td>
+                                    <td>€{order.TotalPrice}</td>
+                                    <td>{convertiDataUnixEpoch(order.Date)}</td>
+                                </tr>
+                            }
+                        })}
+                    </tbody>
+                </table>
+            </div>
+            <div className='ordersConsegnati'>
+                <h1>Consegnati</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordine n.</th>
+                            <th>Spesa Ordine</th>
+                            <th>Data Ordine</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        {allOrders.map(order => {
+                            if(order.State === 'CONSEGNATO'){
+                                return <tr className='trOrders' key={order.CartId} onClick={() => navigate(`/SeeOrder/${order.CartId}`)}>
+                                    <td>{order.CartId}</td>
+                                    <td>€{order.TotalPrice}</td>
+                                    <td>{convertiDataUnixEpoch(order.Date)}</td>
+                                </tr>
+                            }
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     )

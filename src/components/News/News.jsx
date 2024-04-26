@@ -2,6 +2,7 @@ import './News.css'
 import { useState, useEffect } from 'react'
 import Spinner from '../Spinner/Spinner'
 import ProductCard from '../ProductCard/ProductCard'
+import LittleSpinner from '../LittleSpinner/LittleSpinner'
 
 const News = () => {
     const [newProducts, setNewProducts] = useState('')
@@ -31,7 +32,7 @@ const News = () => {
             <div className='newProductsContainer'>
                 {newProducts.length > 0 ? (newProducts.map(product => {
                     return <ProductCard key={product.ProductId} product={product}/>
-                })) : ''}
+                })) : <LittleSpinner/>}
             </div>
         </div>
     )

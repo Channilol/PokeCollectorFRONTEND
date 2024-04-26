@@ -25,6 +25,7 @@ import WishList from './components/WishList/WishList';
 import ProductByLan from './components/ProductByLan/ProductByLan';
 import Pokedex from './components/Pokedex/Pokedex';
 import SearchPage from './components/SearchPage/SearchPage';
+import SeeOrder from './components/SeeOrder/SeeOrder';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false)
@@ -87,6 +88,7 @@ function App() {
           <Route path='/ProductByLan/:id' element={<ProductByLan/>}/>
           <Route path='/Pokedex' element={<Pokedex/>}/>
           <Route path='/SearchPage/:id' element={<SearchPage/>}/>
+          <Route path='/SeeOrder/:id' element={<SeeOrder/>}/>
         </Routes>
         <Footer/>
       </div>
