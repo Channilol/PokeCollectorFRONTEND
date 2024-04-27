@@ -7,9 +7,9 @@ Link alla repository backend: [PokeCollectorBACKEND](https://github.com/Channilo
 ### Istruzioni di lancio:
 
 1. Clonare la repository backend dal link fornito.
-2. Utilizzare Entity Framework per creare un database SQL utilizzando i modelli dell'app backend.
-3. Aprire ed avviare l'applicazione backend che fungerà da contatto tra il database SQL e l'app frontend.
-4. Assicurarsi di avere un ambiente di sviluppo .NET Core configurato correttamente.
+2. Aprire l'applicazione backend ed utilizzare Entity Framework per creare un database SQL utilizzando i modelli dell'app backend.
+3. Avviare l'applicazione backend che fungerà da contatto tra il database SQL e l'app frontend.
+4. Assicurarsi di avere un ambiente di sviluppo .NET configurato correttamente.
 
 ```bash
 dotnet run
